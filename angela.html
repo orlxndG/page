@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Angie ❤️</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            /* Fondo ligeramente ajustado para que resalten las estrellas */
+            background: radial-gradient(circle at 50% 120%, #2b1055, #16213e, #000000);
+            font-family: 'Quicksand', sans-serif;
+            height: 100vh;
+            height: 100dvh; /* Altura dinámica para móviles */
+            width: 100vw;
+            position: relative;
+            touch-action: manipulation;
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Tipografías */
+        .script-font { font-family: 'Dancing Script', cursive; }
+        .serif-font { font-family: 'Playfair Display', serif; }
+
+        /* Tarjeta de Vidrio (Glassmorphism) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        /* Efectos de texto */
+        .text-glow-gold {
+            text-shadow: 0 0 10px rgba(253, 224, 71, 0.3), 0 0 20px rgba(253, 224, 71, 0.1);
+        }
+        
+        .text-glow-blue {
+            text-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+        }
+
+        /* Capa de ruido para textura */
+        .noise-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJnoiPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjY1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2cpIiBvcGFjaXR5PSIwLjAzIi8+PC9zdmc+');
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 640px) {
+            .glass-card {
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            }
+        }
+
+        @media (max-height: 700px) {
+            .compact-spacing {
+                margin-top: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center text-center text-white">
+
+    <!-- Canvas de Fondo -->
+    <canvas id="canvas"></canvas>
+    
+    <!-- Textura granulada -->
+    <div class="noise-overlay"></div>
+
+    <!-- Contenido Principal (Tarjeta) -->
+    <div class="z-20 px-3 sm:px-4 w-full max-w-2xl relative" style="animation: fadeIn 2s ease-out;">
+        
+        <div class="glass-card px-4 sm:px-2 md:px-4 rounded-3xl sm:rounded-[3rem] transform transition-all hover:scale-[1.01] duration-700 border-t border-white/20">
+            
+            <!-- Decoración superior -->
+            <div class="absolute top-0 left-0 w-full flex justify-center -mt-4 sm:-mt-4 opacity-80">
+                <div class="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-blue-300 to-blue-500"></div>
+            </div>
+
+            <div class="mb-6 sm:mb-8">
+                <!-- Corazón -->
+                <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-blue-200 opacity-90 drop-shadow-[0_0_15px_rgba(147,197,253,0.6)] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+
+            <!-- Título Principal -->
+            <h1 class="serif-font text-4xl sm:text-5xl md:text-7xl mb-1 sm:mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-white to-blue-100 drop-shadow-lg tracking-tight leading-tight">
+                Te Amo Mucho
+            </h1>
+            <h2 class="script-font text-5xl sm:text-6xl md:text-8xl mb-6 sm:mb-8 text-blue-200 text-glow-blue -rotate-2 transform origin-center leading-tight">
+                Angie
+            </h2>
+            
+            <!-- Separador -->
+            <div class="flex items-center justify-center gap-3 sm:gap-4 my-6 sm:my-8 opacity-60">
+                <div class="h-px w-8 sm:w-12 bg-blue-200"></div>
+                <div class="text-lg sm:text-xl">✧</div>
+                <div class="h-px w-8 sm:w-12 bg-blue-200"></div>
+            </div>
+
+            <!-- Mensaje de viaje -->
+            <div class="relative inline-block">
+                <span class="absolute -inset-1 bg-blue-500/20 blur-xl rounded-full"></span>
+                <h3 class="relative text-xl sm:text-2xl md:text-3xl font-light tracking-[0.15em] sm:tracking-[0.2em] text-yellow-50 uppercase text-glow-gold font-serif px-2">
+                    Feliz Viaje Preciosa
+                </h3>
+            </div>
+
+            <p class="mt-6 sm:mt-10 text-sm sm:text-base md:text-lg text-blue-100/80 font-light italic serif-font leading-relaxed px-2">
+                Espero disfrutes tu viaje y veas que la vida no es tan mala<br class="hidden sm:inline">
+                <span class="sm:hidden"> </span> Atte. Orlando <br class="hidden sm:inline">
+                <span class="sm:hidden"> </span> Saludos Cordiales 
+            </p>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE ANIMACIÓN OPTIMIZADO -->
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let entities = [];
+        let stars = [];
+        let shootingStars = [];
+
+        // Colores del diseño
+        const COLORS = {
+            jelly: {
+                headInner: 'rgba(0, 200, 255, 0.2)',
+                headOuter: 'rgba(0, 100, 255, 0.6)',
+                tentacles: 'rgba(0, 255, 255, 0.4)',
+                glow: '#00ffff'
+            },
+            lily: {
+                petalDark: '#1a237e',
+                petalMid: '#2962ff',
+                petalLight: '#82b1ff',
+                center: '#4a148c',
+                stamen: '#ffee58'
+            }
+        };
+
+        const random = (min, max) => Math.random() * (max - min) + min;
+
+        // --- CLASE ESTRELLA ---
+        class Star {
+            constructor() {
+                this.x = random(0, width);
+                this.y = random(0, height);
+                this.size = random(0.2, 1.5);
+                this.baseAlpha = random(0.3, 0.8);
+                this.flickerSpeed = random(0.02, 0.05);
+                this.flickerOffset = random(0, Math.PI * 2);
+            }
+
+            update(time) {
+                // Efecto de parpadeo suave
+                this.currentAlpha = this.baseAlpha + Math.sin(time * 5 + this.flickerOffset) * 0.2;
+                if(this.currentAlpha < 0) this.currentAlpha = 0;
+            }
+
+            draw(ctx) {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.currentAlpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // --- CLASE ESTRELLA FUGAZ ---
+        class ShootingStar {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = random(0, width);
+                this.y = random(0, height / 2); // Solo en la mitad superior
+                this.len = random(80, 150);
+                this.speed = random(10, 20);
+                this.size = random(0.5, 2);
+                // Viajan en diagonal
+                this.waitTime = random(50, 300); // Tiempo de espera antes de aparecer
+                this.active = false;
+            }
+
+            update() {
+                if (this.waitTime > 0) {
+                    this.waitTime--;
+                    return;
+                }
+                
+                this.active = true;
+                this.x -= this.speed;
+                this.y += this.speed * 0.5; // Ángulo suave
+
+                if (this.x < -this.len || this.y > height + this.len) {
+                    this.active = false;
+                    this.reset();
+                }
+            }
+
+            draw(ctx) {
+                if (!this.active) return;
+                
+                ctx.save();
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.lineCap = 'round';
+                ctx.lineWidth = this.size;
+                
+                // Gradiente para la cola
+                let grad = ctx.createLinearGradient(this.x, this.y, this.x + this.len, this.y - this.len * 0.5);
+                grad.addColorStop(0, 'rgba(255,255,255,1)');
+                grad.addColorStop(1, 'rgba(255,255,255,0)');
+                
+                ctx.strokeStyle = grad;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x + this.len, this.y - this.len * 0.5);
+                ctx.stroke();
+                
+                // Brillo en la cabeza
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#fff';
+                ctx.fillStyle = '#fff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size + 1, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.restore();
+            }
+        }
+
+        // --- CLASE MEDUSA ---
+        class Jellyfish {
+            constructor(x, y, scale) {
+                this.x = x;
+                this.y = y;
+                this.scale = scale;
+                this.tentacles = [];
+                this.numTentacles = 12;
+                this.phase = random(0, Math.PI * 2);
+                this.speedY = random(0.3, 0.8);
+                
+                // Inicializar tentáculos
+                for(let i = 0; i < this.numTentacles; i++) {
+                    let segs = [];
+                    let numSegs = 10;
+                    for(let j = 0; j < numSegs; j++) {
+                        segs.push({x: x, y: y + j * 5 * scale});
+                    }
+                    this.tentacles.push({
+                        segments: segs,
+                        angleOffset: (i / this.numTentacles) * Math.PI * 2,
+                    });
+                }
+            }
+
+            update(time) {
+                this.y -= this.speedY; 
+                this.x += Math.sin(time * 0.5 + this.phase) * 0.3;
+
+                if (this.y < -150) {
+                    this.y = height + 150;
+                    this.x = random(0, width);
+                    this.tentacles.forEach(t => {
+                        t.segments.forEach((s, idx) => { 
+                            s.y = this.y + idx * 5 * this.scale; 
+                            s.x = this.x; 
+                        });
+                    });
+                }
+
+                this.tentacles.forEach(tentacle => {
+                    let targetX = this.x + Math.cos(tentacle.angleOffset) * 10 * this.scale;
+                    let targetY = this.y + 20 * this.scale;
+
+                    tentacle.segments[0].x = targetX;
+                    tentacle.segments[0].y = targetY;
+
+                    for (let i = 1; i < tentacle.segments.length; i++) {
+                        let prev = tentacle.segments[i - 1];
+                        let curr = tentacle.segments[i];
+                        
+                        let dx = prev.x - curr.x;
+                        let dy = prev.y - curr.y;
+                        
+                        curr.x += dx * 0.25;
+                        curr.y += dy * 0.25;
+
+                        curr.x += Math.sin(time * 2 + i * 0.2 + tentacle.angleOffset) * 0.5;
+                        curr.y += 1.5;
+                    }
+                });
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.shadowBlur = 10 * this.scale;
+                ctx.shadowColor = COLORS.jelly.glow;
+                ctx.globalCompositeOperation = 'screen';
+                ctx.globalAlpha = 0.7;
+
+                let headGradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, 40 * this.scale);
+                headGradient.addColorStop(0, COLORS.jelly.headInner);
+                headGradient.addColorStop(0.8, COLORS.jelly.headOuter);
+                headGradient.addColorStop(1, 'rgba(0,0,0,0)');
+
+                ctx.fillStyle = headGradient;
+                ctx.beginPath();
+                ctx.moveTo(this.x - 40 * this.scale, this.y + 10 * this.scale);
+                ctx.bezierCurveTo(
+                    this.x - 40 * this.scale, this.y - 40 * this.scale,
+                    this.x + 40 * this.scale, this.y - 40 * this.scale,
+                    this.x + 40 * this.scale, this.y + 10 * this.scale
+                );
+                ctx.bezierCurveTo(
+                    this.x + 20 * this.scale, this.y + 5 * this.scale,
+                    this.x - 20 * this.scale, this.y + 15 * this.scale,
+                    this.x - 40 * this.scale, this.y + 10 * this.scale
+                );
+                ctx.fill();
+
+                ctx.shadowBlur = 0;
+                this.tentacles.forEach(tentacle => {
+                    ctx.beginPath();
+                    ctx.moveTo(tentacle.segments[0].x, tentacle.segments[0].y);
+                    for (let i = 1; i < tentacle.segments.length - 1; i++) {
+                        const xc = (tentacle.segments[i].x + tentacle.segments[i + 1].x) / 2;
+                        const yc = (tentacle.segments[i].y + tentacle.segments[i + 1].y) / 2;
+                        ctx.quadraticCurveTo(tentacle.segments[i].x, tentacle.segments[i].y, xc, yc);
+                    }
+                    let tGrad = ctx.createLinearGradient(this.x, this.y, this.x, this.y + 150*this.scale);
+                    tGrad.addColorStop(0, COLORS.jelly.tentacles);
+                    tGrad.addColorStop(1, 'rgba(0, 255, 255, 0)');
+                    ctx.strokeStyle = tGrad;
+                    ctx.lineWidth = 2 * this.scale;
+                    ctx.stroke();
+                });
+                ctx.restore();
+            }
+        }
+
+        // --- CLASE LIRIO ---
+        class BlueLily {
+            constructor(x, y, scale) {
+                this.x = x;
+                this.y = y;
+                this.scale = scale;
+                this.angle = random(0, Math.PI * 2); 
+                this.currentSway = 0;
+                this.speedY = random(0.2, 0.6);
+                this.rotationSpeed = random(-0.01, 0.01);
+            }
+
+            update(time) {
+                this.y -= this.speedY;
+                this.angle += this.rotationSpeed;
+                this.currentSway = Math.sin(time * 0.5 + this.x) * 0.1;
+
+                if (this.y < -150) {
+                    this.y = height + 150;
+                    this.x = random(0, width);
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle + this.currentSway);
+                ctx.scale(this.scale, this.scale);
+
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = 'rgba(0,0,0,0.3)';
+
+                for(let i = 0; i < 6; i++) {
+                    ctx.save();
+                    ctx.rotate((i * 60) * Math.PI / 180);
+                    this.drawPetal(ctx);
+                    ctx.restore();
+                }
+
+                this.drawStamens(ctx);
+                ctx.restore();
+            }
+
+            drawPetal(ctx) {
+                let grad = ctx.createLinearGradient(0, 0, 0, -100);
+                grad.addColorStop(0, COLORS.lily.center);
+                grad.addColorStop(0.4, COLORS.lily.petalMid);
+                grad.addColorStop(0.9, COLORS.lily.petalLight);
+                grad.addColorStop(1, '#ffffff');
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-30, -40, -40, -80, 0, -120);
+                ctx.bezierCurveTo(40, -80, 30, -40, 0, 0);
+                ctx.fill();
+
+                ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(0, -60, 0, -115);
+                ctx.stroke();
+
+                ctx.fillStyle = '#1a237e';
+                for(let k=0; k<5; k++) {
+                    let sx = random(-10, 10);
+                    let sy = random(-20, -50);
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, 1.5, 0, Math.PI*2);
+                    ctx.fill();
+                }
+            }
+
+            drawStamens(ctx) {
+                ctx.shadowBlur = 0;
+                for(let i=0; i<6; i++) {
+                    ctx.save();
+                    ctx.rotate(i * 60 * Math.PI / 180 + Math.PI/6);
+                    ctx.strokeStyle = '#e1bee7';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.quadraticCurveTo(5, -20, 10, -40);
+                    ctx.stroke();
+                    ctx.fillStyle = '#5d4037';
+                    ctx.beginPath();
+                    ctx.ellipse(10, -40, 3, 6, Math.PI/4, 0, Math.PI*2);
+                    ctx.fill();
+                    ctx.fillStyle = '#ffecb3';
+                    ctx.beginPath();
+                    ctx.arc(10, -42, 1, 0, Math.PI*2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+                ctx.fillStyle = '#fff';
+                ctx.globalAlpha = 0.3;
+                ctx.beginPath();
+                ctx.arc(0, 0, 15, 0, Math.PI*2);
+                ctx.fill();
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
+        // --- SISTEMA PRINCIPAL ---
+        function init() {
+            resize();
+            
+            const isMobile = window.innerWidth < 768;
+            const jellyfishCount = isMobile ? 5 : 8;
+            const lilyCount = isMobile ? 10 : 15;
+            // Cantidad de estrellas
+            const starCount = isMobile ? 100 : 200;
+            
+            // Inicializar Estrellas (Fondo)
+            for(let i = 0; i < starCount; i++) {
+                stars.push(new Star());
+            }
+
+            // Inicializar Estrellas Fugaces (2 para que salgan ocasionalmente)
+            for(let i = 0; i < 2; i++) {
+                shootingStars.push(new ShootingStar());
+            }
+            
+            // Inicializar Medusas
+            for(let i = 0; i < jellyfishCount; i++) {
+                entities.push(new Jellyfish(
+                    random(0, width), 
+                    random(0, height + 200),
+                    random(0.5, 0.8)
+                ));
+            }
+
+            // Inicializar Lirios
+            for(let i = 0; i < lilyCount; i++) {
+                entities.push(new BlueLily(
+                    random(0, width),
+                    random(0, height + 200),
+                    random(0.35, 0.55)
+                ));
+            }
+
+            loop();
+        }
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            // Reinicializar estrellas al cambiar tamaño para cubrir toda la pantalla
+            stars = [];
+            for(let i = 0; i < (width < 768 ? 100 : 200); i++) {
+                stars.push(new Star());
+            }
+        }
+
+        window.addEventListener('resize', resize);
+
+        let time = 0;
+        let lastTime = 0;
+        
+        function loop(currentTime = 0) {
+            requestAnimationFrame(loop);
+            
+            const deltaTime = (currentTime - lastTime) / 16.67;
+            lastTime = currentTime;
+            time += 0.01 * Math.min(deltaTime, 2);
+
+            ctx.clearRect(0, 0, width, height);
+
+            // 1. Dibujar Estrellas Fijas (Fondo más lejano)
+            stars.forEach(star => {
+                star.update(time);
+                star.draw(ctx);
+            });
+
+            // 2. Dibujar Estrellas Fugaces
+            shootingStars.forEach(ss => {
+                ss.update();
+                ss.draw(ctx);
+            });
+
+            // 3. Dibujar Entidades (Medusas y Lirios) encima
+            entities.forEach(entity => {
+                entity.update(time);
+                entity.draw(ctx);
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            entities.push(new BlueLily(e.clientX, e.clientY, 0.5));
+            if (entities.length > 35) entities.shift();
+        });
+
+        init();
+    </script>
+</body>
+</html>
